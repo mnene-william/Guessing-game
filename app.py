@@ -17,12 +17,20 @@ def get_difficulty_choice():
 
         for key, value in DIFFICULTY_LEVELS.items():
             print(f" {key.capitalize()} ({value['attempts']} Tries)")
-            choice = input("Enter difficulty (Easy/Medium/Hard:)").lower()
 
-            if choice in DIFFICULTY_LEVELS:
-                return choice
-            else:
-                print("Invalid difficulty. Please choose Easy, Medium, or Hard.")
+        choice = input("Enter difficulty (Easy/Medium/Hard:)").lower()
+
+        if choice in DIFFICULTY_LEVELS:
+            return choice
+        else:
+             print("Invalid difficulty. Please choose Easy, Medium, or Hard.")
+
+def give_hint(secret_number, attempts_made):
+    if attempts_made % 3 == 0 and attempts_made > 0:
+        if secret_number % 2 == 0:
+            print("Hint: The number is an EVEN number.")
+        else:
+            print("Hint: The number is an ODD number.")
 
 
 def play_game():
@@ -61,6 +69,9 @@ def play_game():
             print("Too low. Try again")
         else:
             print("Too high. Try again")
+
+        if guess != secret_number:
+            give_hint(secret_number, attempts_made)
 
     if not game_won:
         print(f"Game Over! You ran out of attempts. The number was {secret_number}.")
