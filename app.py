@@ -26,11 +26,25 @@ def get_difficulty_choice():
              print("Invalid difficulty. Please choose Easy, Medium, or Hard.")
 
 def give_hint(secret_number, attempts_made):
+    guess = int(input(f"Enter your guess ({MIN_NUMBER} - {MAX_NUMBER}):"))
     if attempts_made % 3 == 0 and attempts_made > 0:
         if secret_number % 2 == 0:
             print("Hint: The number is an EVEN number.")
         else:
             print("Hint: The number is an ODD number.")
+
+    if attempts_made % 5 == 0 :
+        if secret_number % 3 == 0:
+            print("The number is divisible by 3.")
+        else:
+            if abs(secret_number % 10) <= 2 or abs(secret_number % 10 - 10) <= 2:
+                print(f"The number is close to a multiple of 10")
+            elif secret_number < guess:
+                print("The number is less than your guess.")
+            else:
+                print("The number is greater than your guess.")
+
+
 
 
 def play_game():
