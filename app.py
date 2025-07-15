@@ -45,7 +45,7 @@ def play_game():
     secret_number = random.randint(MIN_NUMBER, MAX_NUMBER)
     attempts_made = 0
     attempts_left = max_attempts
-    game_won = False
+    game_won = True
 
     while attempts_left > 0:
         print(f"Attempts left: {attempts_left}")
@@ -78,6 +78,7 @@ def play_game():
 
 if __name__ == "__main__":
     play_game()
+
 
 
 
